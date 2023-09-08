@@ -4,8 +4,8 @@ pipeline {
     image = "reddyashishaleti/nodejswebapp"
     appimage = ""
   }
-  stages {
-    stage ('Build') {
+  stages{
+    stage('Build') {
         steps {
             script {
                 dockerImage = docker.build image
@@ -13,7 +13,7 @@ pipeline {
         }
      }
     }
-    stage ('PUSH') {
+    stage('PUSH') {
       environment {
          dockerCredentials = "dockerCred"
       }
