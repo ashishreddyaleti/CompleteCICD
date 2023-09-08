@@ -13,7 +13,7 @@ pipeline {
         }
      }
     }
-    stage('PUSH') {
+    stage('PUSH'){
       environment {
          dockerCredentials = "dockerCred"
       }
@@ -27,7 +27,7 @@ pipeline {
         }
       }             
     }
-    stage('Deploy') {
+    stage('Deploy'){
         steps {
             script {
                 kubectl apply -f Deployment.yaml
