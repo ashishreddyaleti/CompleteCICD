@@ -2,6 +2,7 @@ pipeline {
   agent any
   environment {
     image = "reddyashishaleti/nodejswebapp"
+    dockerCredentials = "dockerCred"
     appimage = ""
   }
   stages{
@@ -14,11 +15,8 @@ pipeline {
      }
     }
     stage('PUSH'){
-      environment {
-         dockerCredentials = "dockerCred"
-      }
-      steps {
-        script {
+       steps {
+         script {
             def appimage = docker.build image + "$BUILDNUMBER"
             docker.WithRegistry('https://registry.hub.docker.com', 'Dockerhub') {
                 appimage.push()
