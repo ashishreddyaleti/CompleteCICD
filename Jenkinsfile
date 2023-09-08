@@ -14,7 +14,7 @@ pipeline {
         }
      }
     }
-    stage('PUSH'){
+    stage('Build2') {
        steps {
          script {
             def appimage = docker.build image + "$BUILDNUMBER"
