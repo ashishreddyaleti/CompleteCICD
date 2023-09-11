@@ -32,7 +32,7 @@ pipeline{
         stage('Deploy'){
             steps{
                 script{
-                    kubectl apply -f deployment.yaml
+                    sh kubectl apply -f deployment.yaml
                 }
             }
         }
