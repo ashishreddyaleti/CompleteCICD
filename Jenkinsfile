@@ -20,7 +20,7 @@ pipeline{
             steps{
                 script {
                     def appimage = docker.build dockerImagename + "$BUILD_NUMBER"
-                    docker.withRegistry('https://registry.hub.docker.com', 'Dockerhub') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerCred') {
                         appimage.push()
                         appimage.push('latest')
                         
